@@ -1,0 +1,10 @@
+---
+- name: Check project setup
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    configfolder: "{{ playbook_dir | dirname | dirname }}/config/{{ projectid }}"
+  roles:
+    - { role: namolabs.infra.fetchdata, tags: [always] }
+
