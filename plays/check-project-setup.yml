@@ -7,4 +7,9 @@
     configfolder: "{{ playbook_dir | dirname | dirname }}/config/{{ projectid }}"
   roles:
     - { role: namolabs.infra.fetchdata, tags: [always] }
-
+    - name: namolabs.infra.generate_cloud_init
+      tags: [always]
+      vars:
+        ansible_hashed_password: "test"
+        ansible_ssh_authorized_key: "ssh-rsa dummy"
+        vms: "{{ projectdata.vms }}"

@@ -1,0 +1,18 @@
+---
+# Create / Delete VMs
+- name: Create/Delete Demo VM
+  hosts: pve02
+  become: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+    configfolder: "{{ playbook_dir | dirname | dirname }}/config/{{ projectid }}"
+    project_state: "delete"
+
+  roles:
+  - { role: namolabs.infra.fetchdata, tags: [ always ] }
+  - name: namolabs.infra.inventory
+    tags: [ always ]
+    vars:
+      vms: "{{ projectdata.vms }}"
+  - role: namolabs.infra.cloud_init_config
+  - role: namolabs.infra.proxmox_vms

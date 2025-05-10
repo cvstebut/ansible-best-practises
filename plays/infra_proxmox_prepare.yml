@@ -1,0 +1,8 @@
+---
+# Prepare Proxmox nodes
+- name: Prepare Proxmox nodes
+  hosts: pvenodes
+  become: true
+  gather_facts: true
+  roles:
+  - role: namolabs.infra.infra_proxmox_prepare

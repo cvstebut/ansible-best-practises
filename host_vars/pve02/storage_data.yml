@@ -1,0 +1,3 @@
+# Snippet-Storage
+snippets_path: "/mnt/pve/pvedata/snippets/"
+snippets_storage: "pvedata"
